@@ -1,0 +1,114 @@
+<div class="top-bar">
+    <ng-include ng-if="$root.user.id" src="'partials/_main-nav.tpl.html'"></ng-include>
+    <md-button ng-if="!$root.user.id" ng-href="#/login" class="login-button">Logg inn</md-button>
+    <ng-include ng-if="$root.user.id" src="'partials/_userbar.tpl.html'"></ng-include>
+</div>
+
+
+<div class="container">
+    <div class="main-content">
+
+        <h1>Battle №{{ battle.id }}</h1>
+        <h3>Battle name: <span class="black">{{ battle.name }}</span></h3>
+        <h3>Battle status: <span class="black">{{ battle.battle_status.name }}</span></h3>
+        <h3>Rival: <span class="red">{{ rivalBattleField.user.username }}</span></h3>
+
+        <div class="battle-main-block">
+            <table align="center">
+                <tr>
+                    <td class="ship-bilder">
+                        <table ng-show="showDragBlock" class="add-ships">
+                            <tr>
+                                <td colspan="10"><h3 align="center">Choose ship</h3></td>
+                            </tr>
+                            <tr ng-repeat="key in shipsLimit">
+                            <td ng-click="addShip($index + 1)">{{ $index + 1 }}-tier</td>
+                            <td>{{ key }}</td>
+                            </tr>
+                        </table>
+                        <table class="add-ship" ng-show="showAddBlock" ng-model="changePosition"
+                               ng-click="addShip(countDeck, true)">
+                            <tr>
+                                <td>
+                                    <div style="border: 2px solid darkgreen; width: {{ width }}px; height: {{ height }}px; position: absolute;"
+                                         data-drag="true"
+                                         data-jqyoui-options="{revert: 'invalid'}"
+                                         ng-model="startPosition"
+                                         jqyoui-draggable="{animate:true}"
+                                         ng-hide="!startPosition.cell"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="battle-fields">
+                        <table>
+                            <tr>
+                                <td colspan="10">
+                                    <h3 align="center">Own battlefield</h3>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="rows in ownMap">
+                                <td ng-repeat="cell in rows" ng-class="{blocker: ownFieldStatus}" class="cell">
+
+                                    <div ng-if="cell.shipDeck == true" class="shipDeck">
+                                        <div ng-show="cell.shot">
+                                            <hr class="increase">
+                                            <hr class="decrease">
+                                        </div>
+                                    </div>
+
+                                    <div ng-if="!cell.shipDeck">
+                                        <div ng-show="cell.shot" class="circle"></div>
+                                    </div>
+
+                                    <div ng-if="cell.active"
+                                         data-drop="true"
+                                         data-jqyoui-options
+                                         ng-model="finishPosition"
+                                         jqyoui-droppable="{onDrop: 'dropCallback($element.target)'}"
+                                         class="drop-cell"
+                                         data-id="{{ cell.id }}">
+                                        <div ng-if="cell.active"
+                                             style="border: 2px solid darkgreen; width: {{ width }}px; height: {{ height }}px;"
+                                             data-jqyoui-options
+                                             ng-model="finishPosition"
+                                             jqyoui-draggable
+                                             data-drag="true"
+                                             ng-hide="!finishPosition.cell"></div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="battle-fields">
+                        <table>
+                            <tr>
+                                <td colspan="10"><h3 align="center">Rival battlefield</h3></td>
+                            </tr>
+                            <tr ng-repeat="rows in rivalMap">
+                                <td ng-repeat="cell in rows" ng-class="{blocker: rivalFieldStatus}"
+                                    ng-click="createShot(cell.id)" class="cell">
+
+                                    <div ng-show="cell.shot" class="mark-cell">
+                                        <div ng-if="!cell.shotStatusPass" class="cell-hit">
+                                            <hr ng-class="{increaseHitShot: cell.shotStatusHit, increase: cell.shotStatusDestroy}">
+                                            <hr ng-class="{decreaseHitShot: cell.shotStatusHit, decrease: cell.shotStatusDestroy}">
+                                        </div>
+                                        <div ng-show="cell.shotStatusPass" class="circle"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div class="game-over" ng-show="finishGame">
+                <h1 ng-show="lose">Game over. You lose!</h1>
+                <h1 ng-show="won">Game over. You won!</h1>
+                <h3><md-button ng-href="/#/create-battle">Create the new battle</md-button></h3>
+                <h3><md-button ng-href="/#/open-battles">Join the open battle</md-button></h3>
+            </div>
+        </div>
+    </div>
+</div>

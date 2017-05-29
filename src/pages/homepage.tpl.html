@@ -1,0 +1,9 @@
+<div class="top-bar">
+  <ng-include ng-if="$root.user.id" src="'partials/_main-nav.tpl.html'"></ng-include>
+  <md-button ng-if="!$root.user.id" ng-href="#/login" class="login-button">Logg inn</md-button>
+  <ng-include ng-if="$root.user.id" src="'partials/_userbar.tpl.html'"></ng-include>
+</div>
+
+<div class="container index-container">
+  <img src="../images/sea2.jpg" alt="Sea fight" width="100%"/>
+</div>

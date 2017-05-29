@@ -1,0 +1,51 @@
+.tabs-header {
+  background: $black !important;
+  min-height: 1px !important;
+  height: auto;
+  .md-tab {
+    background: $black !important;
+    color: #a4a4a9;
+    text-transform: none;
+    
+    @include iphone {
+      line-height: 28px;
+    }
+    
+    &.md-active {
+      color: #fff;
+      border-color: $blue !important;
+      background: $blue !important;
+    }
+  }
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+  background: $blue;
+  color: $blue;
+}
+
+.tab-content {
+  padding: 20px 30px;
+}
+
+.md-stretch-tabs {
+  background: $black !important;
+  height: 48px !important;
+}
+
+md-tab-item {
+  color: #a4a4a9 !important;
+  text-transform: none !important;
+  &.md-active {
+    color: #fff !important;
+    background: $blue !important;
+  }
+}
+
+md-tab-content {
+  padding: 20px 30px;
+  
+  @include ipad {
+    padding-bottom: 40px;
+  }
+}

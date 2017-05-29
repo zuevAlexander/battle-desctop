@@ -1,0 +1,113 @@
+.pager {
+  font-size: 12px;
+  margin: 0px -15px -25px;
+  padding: 20px 25px 20px;
+  
+  //border: solid 1px red;
+  
+  overflow: hidden;
+  
+  .simple-form {
+    width: 100%;
+  }
+  .md-button {
+    min-width: 24px;
+    min-height: 24px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0;
+    margin: -3px 10px 0 0;
+  }
+  
+  md-input-container {
+    margin-top: -2px;
+  }
+  
+  md-select {
+    border-width: 0px !important;
+    border-radius: 0px;
+    background: none !important;
+    border:none !important;
+    padding: 0 10px;
+    height: 20px;
+    transform: none !important;
+    color: #353540 !important;
+    
+    md-select-value {
+      border: none !important;
+      height: 20px !important;
+      min-height: 20px;
+      line-height: 20px !important;
+      padding: 0 !important;
+      background:  none !important;
+      min-width: 40px;
+      .md-select-icon {
+        width: 18px;
+      }
+    }
+    
+    &:focus {
+      border: none !important;
+    }
+    &.md-input.ng-invalid.ng-dirty {
+     border: none !important;
+    }
+  }
+}
+
+.pager__summary {
+  float: left;
+  
+  @include ipad {
+    width: 100%;
+    padding-bottom: 5px;
+  }
+}
+  
+.pager__options {
+  float: right;
+  //border: solid 1px red;
+  
+  @include ipad {
+    width: 100%;
+  }
+  
+  .item {
+    float: left;
+    //border: solid 1px red;
+    
+    &.nav-buttons {
+      padding-left: 20px;
+      float: right;
+      
+      @include ipad {
+        float: left;
+      }
+    }
+    
+    &.nav-drops {
+      @include iphone {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    
+    .item-name {
+      float: left;
+    }
+    .item-content {
+      float: left;
+    }
+    
+  }
+  
+}
+
+
+
+
+
+
+
+
+

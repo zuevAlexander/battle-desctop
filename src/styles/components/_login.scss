@@ -1,0 +1,100 @@
+.loginBox {
+  width: 644px;
+  //height: 473px;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 1px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  padding: 0 200px 20px;
+  margin: 90px auto 150px;
+  
+  @include iphone {
+    display: block !important;
+    padding: 0 26%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
+    width: auto;
+  }
+  @include iphone5 {
+    padding: 0 30px;
+  }
+  
+  &.registerBox {
+    padding: 0 100px;
+    height: auto;
+    
+    @include iphone {
+      padding: 0 30px;
+    }
+    
+    md-input-container {
+     margin: 0 !important;
+    }
+  }
+  
+  .loginBox-logo {
+    text-align: center;
+    padding: 40px 0 10px;
+  }
+  
+  .loginBox-title {
+    font-weight: normal;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 1.3em;
+  }
+  
+  .loginBox-signup {
+    text-align: center;
+    font-size: 13px;
+    a {
+      color: #7e7e85;
+    }
+  }
+  
+  .loginBox-button {
+    text-align: center;
+    padding: 10px 0 10px;
+  }
+  
+  .md-primary {
+    margin: 0 auto;
+    text-transform: none;
+    font-size: 16px;
+    padding-left: 27px;
+    padding-right: 27px;
+  }
+  
+  .login-label {
+    padding: 0 !important;
+  }
+  
+  .login-input {
+    border-width: 0 0 2px 0 !important;
+    border-color: $black;
+    padding: 0px !important;
+    border-radius: 0;
+    background: #fff;
+    height: 30px;
+    @include ipad-h {
+      font-size: 16px !important;
+    }
+  }
+  
+  .simple-form input:focus, .simple-form textarea:focus, .simple-form md-select:focus {
+    border-width: 0 0 2px 0 !important;
+    border-color: $black;
+  }
+  
+  .simple-form input.md-input.ng-invalid.ng-dirty, .simple-form textarea.md-input.ng-invalid.ng-dirty, .simple-form md-select.md-input.ng-invalid.ng-dirty {
+    //border: solid 1px #dd2c00 !important;
+    border-width: 0 0 2px 0 !important;
+    border-color: #dd2c00;
+  }
+  
+  
+  md-input-container {
+    margin: 10px 0 !important;
+  }
+  
+}

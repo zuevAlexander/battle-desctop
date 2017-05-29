@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sea fight</title>
+  <meta name="description" content="">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="styles/app.css">
+  <link href="http://vjs.zencdn.net/5.14.1/video-js.css" rel="stylesheet">
+  <link rel="shortcut icon" href="images/sea_fight_logo.png" type="image/png">
+  <!-- endbuild -->
+</head>
+
+<body  ng-cloak>
+
+  <!-- Add your site or application content here -->
+  <div ng-view="" id="appView"></div>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+  <!-- build:js /scripts/main.js -->
+  <script src="/scripts/app.js"></script>
+  <script src="/scripts/controllers/homepage.controller.js"></script>
+  <script src="/scripts/controllers/login.controller.js"></script>
+  <script src="/scripts/controllers/register.controller.js"></script>
+  <script src="/scripts/controllers/battle.controller.js"></script>
+  <script src="/scripts/controllers/openBattles.controller.js"></script>
+  <script src="/scripts/controllers/preparationBattles.controller.js"></script>
+  <script src="/scripts/controllers/activeBattles.controller.js"></script>
+  <script src="/scripts/controllers/finishedBattles.controller.js"></script>
+  <script src="/scripts/controllers/closedBattles.controller.js"></script>
+  <script src="/scripts/controllers/logout.controller.js"></script>
+  <script src="/scripts/controllers/ships.controller.js"></script>
+  <script src="/scripts/services/api.js"></script>
+  <script src="/scripts/services/util.js"></script>
+  <script src="/scripts/models/user.js"></script>
+  <script src="/scripts/models/battle.js"></script>
+  <script src="/scripts/models/ship.js"></script>
+  <script src="/scripts/models/shot.js"></script>
+  <script src="/scripts/models/count_ships.js"></script>
+  <script src="/scripts/angular-dragdrop.js"></script>
+  <script src="/scripts/autobahn.min.js"></script>
+  <script src="/scripts/gos_web_socket_client.js"></script>
+  <!-- endbuild -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.min.js"></script>
+  <script src="http://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+  <script src="http://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+  <script src="http://shuyu.github.io/angular-material-fileinput/dist/lf-ng-md-file-input.js"></script>
+
+  <!-- this is for angular maps -->
+  <script src="https://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.2.1/lodash.min.js"></script>
+  <script src="https://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <script src="http://vjs.zencdn.net/5.14.1/video.js"></script>
+
+</body>
+</html>

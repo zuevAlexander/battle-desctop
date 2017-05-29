@@ -1,0 +1,31 @@
+.main-nav {
+  float: left;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 65px;
+  min-width: 65px;
+  border-radius: 0;
+
+  md-icon {
+    color: #c1c1c5;
+  }
+  a.md-button {
+    padding-top: 0 !important;
+  }
+  .md-icon-button {
+    display: block;
+    width: 65px;
+    min-width: 65px;
+    height: 65px;
+    margin: 0;
+    background:  none;
+    text-align: center;
+    padding: 0 ;
+  }
+  
+}
+
+md-menu-item>a.md-button {
+  padding-top: 2px;
+}

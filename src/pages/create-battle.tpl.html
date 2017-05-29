@@ -1,0 +1,41 @@
+<div class="top-bar">
+  <ng-include ng-if="$root.user.id" src="'partials/_main-nav.tpl.html'"></ng-include>
+  <md-button ng-if="!$root.user.id" ng-href="#/login" class="login-button">Logg inn</md-button>
+  <ng-include ng-if="$root.user.id" src="'partials/_userbar.tpl.html'"></ng-include>
+</div>
+
+
+<div class="container">
+    
+  <md-content  class="loginBox registerBox">
+    
+    <h3 class="loginBox-title">Create Battle</h3>
+    
+    <form id="battleForm" name="battleForm" class="simple-form" ng-submit="doUpload()">
+        
+      <md-input-container>
+        <label>Battle name</label>
+        <input name="name" ng-model="battle.name" required>
+        <div ng-messages="registerForm.OrganisasjonsNavn.$error">
+          <div ng-message="required">Battle name is required.</div>
+        </div>
+      </md-input-container>
+
+      <!--<md-input-container>-->
+        <!--<label>Map type</label>-->
+        <!--<input name="mapType" ng-model="battle.mapType" required>-->
+        <!--<div ng-messages="registerForm.OrganisasjonsNavn.$error">-->
+          <!--<div ng-message="required">Map type is required.</div>-->
+        <!--</div>-->
+      <!--</md-input-container>-->
+
+      <md-input-container class="md-block loginBox-button button-container">
+        <md-button type="submit" class="md-raised md-primary" target="_blank" aria-label="Create" ng-click="createBattle()">Create</md-button>
+      </md-input-container>
+
+    </form>
+
+  </md-content>
+
+</div>
+

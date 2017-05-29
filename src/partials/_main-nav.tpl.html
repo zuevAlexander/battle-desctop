@@ -1,0 +1,22 @@
+<md-menu md-offset="0 65" class="main-nav" ng-if="$root.user">
+ <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Main navigation">
+   <md-icon md-svg-icon="menu"></md-icon>
+ </md-button>
+ <md-menu-content width="3" class="dropdown">
+   <!-- <md-menu-item  ng-if="$root.user && $root.user.type.id == 2"><md-button>Meldinger</md-button></md-menu-item> -->
+   <md-menu-item  ng-if="$root.user"><md-button ng-href="/#/create-battle">Create a new Battle</md-button></md-menu-item>
+   <md-menu-item  ng-if="$root.user"><md-button ng-href="/#/open-battles">Opene Battles</md-button></md-menu-item>
+   <md-menu-item  ng-if="$root.user"><md-button ng-href="/#/preparation-battles">Preparation Battles</md-button></md-menu-item>
+   <md-menu-item  ng-if="$root.user"><md-button ng-href="/#/active-battles">Active Battles</md-button></md-menu-item>
+   <md-menu-item  ng-if="$root.user"><md-button ng-href="/#/finished-battles">Finished Battles</md-button></md-menu-item>
+   <md-menu-item  ng-if="$root.user"><md-button ng-href="/#/closed-battles">Closed Battles</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
+
+<h2>Sea fight</h2>
+
+
+
+
+
+

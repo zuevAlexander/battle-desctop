@@ -1,0 +1,36 @@
+
+  <md-content  class="loginBox" >
+    
+    <div class="loginBox-logo"><img src="../images/sea_fight_logo.png" alt="CV Ident" width="150" height="88" /></div>
+    
+    <h3 class="loginBox-title">Login</h3>
+    
+    <form name="loginForm" class="simple-form">
+        
+        <md-input-container class="md-block">
+          <label class="login-label">Username</label>
+          <input required ng-model="user.username" name="userName" class="login-input">
+          <div ng-messages="loginForm.userName.$error">
+            <div ng-message="required">Please fill in the login</div>
+          </div>
+        </md-input-container>
+  
+        <md-input-container class="md-block">
+          <label class="login-label">Password</label>
+          <input required ng-model="user.password" name="userPassword" type="password" class="login-input">
+          <div ng-messages="loginForm.userPassword.$error">
+            <div ng-message="required">Password required</div>
+          </div>
+        </md-input-container>
+        
+        <md-input-container class="md-block loginBox-button">
+          <md-button type="submit"  class="md-raised md-primary" target="_blank" ng-click="login()" >Logg inn</md-button>
+        </md-input-container>
+        
+        <md-input-container class="md-block loginBox-signup">
+          <a href="#/register">Sign Up</a>
+        </md-input-container>
+        
+    </form>
+  </md-content>
+  

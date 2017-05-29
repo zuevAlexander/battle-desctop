@@ -1,0 +1,62 @@
+<div class="top-bar">
+    <ng-include ng-if="$root.user.id" src="'partials/_main-nav.tpl.html'"></ng-include>
+    <md-button ng-if="!$root.user.id" ng-href="#/login" class="login-button">Logg inn</md-button>
+    <ng-include ng-if="$root.user.id" src="'partials/_userbar.tpl.html'"></ng-include>
+</div>
+
+
+<div class="container">
+    <div class="main-content">
+
+        <h1>{{ battleStatus }} Battles</h1>
+
+        <div class="position-title" layout="row">
+            <div class="position-item" flex="10">№</div>
+            <div class="position-item" flex="40">Name</div>
+            <div class="position-item" flex="40">Status</div>
+            <div class="position-item" flex="40">Rival</div>
+            <div class="position-item" ng-if="battleStatus == 'Open' || battleStatus == 'Closed'" flex="40">Change status</div>
+        </div>
+
+        <div ng-repeat="battle in battles.items" class="position" layout="row">
+            <div class="position-item" flex="10">
+                {{ battle.id }}
+            </div>
+            <div class="position-item" ng-if="battleStatus == 'Open' || battleStatus == 'Closed'" flex="40">
+                {{ battle.name }}
+            </div>
+            <div class="position-item" ng-if="battleStatus != 'Open' && battleStatus != 'Closed'" flex="40">
+                <a href ="/#/battle/{{battle.id}}">{{ battle.name }}</a>
+            </div>
+            <div class="position-item" flex="40">
+                {{ battle.battle_status.name }}
+            </div>
+            <div class="position-item" flex="40">
+                <span ng-if="battle.battle_fields[0].user.username != $root.user.username">{{ battle.battle_fields[0].user.username }} {{rival}}</span>
+                <span ng-if="battle.battle_fields[0].user.username == $root.user.username">{{ battle.battle_fields[1].user.username }} {{rival}}</span>
+            </div>
+            <div class="position-item position-has-options" ng-if="battleStatus == 'Open' || battleStatus == 'Closed'" flex="40">
+                <md-menu md-offset="8 0" md-position-mode="target-right target" class="position-options-menu">
+                    <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="position options">
+                        <md-icon md-svg-icon="dots-horizontal"></md-icon>
+                    </md-button>
+                    <md-menu-content width="3" class="dropdown">
+                        <md-menu-item>
+                            <md-button ng-if="battleStatus == 'Open' && battle.battle_fields[0].user.username != $root.user.username" ng-click="participate(battle)">
+                                Participate
+                            </md-button>
+                            <md-button ng-if="battleStatus == 'Open' && battle.battle_fields[0].user.username == $root.user.username" ng-click="close(battle)">
+                                Close
+                            </md-button>
+                            <md-button ng-if="battleStatus == 'Closed'" ng-click="open(battle)">
+                                Open
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

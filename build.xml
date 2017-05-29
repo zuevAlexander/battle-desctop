@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="CVIdent-Frontend" default="build">
+    <record name="build.log" loglevel="verbose" action="start"/>
+
+    <property name="workspace" value="${basedir}"/>
+    <property name="deploydir" value="${workspace}/deploy"/>
+    <property name="deploysettings" value="${deploydir}/settings"/>
+    <property name="deployoutput" value="${deploydir}/out"/>
+    <property name="deployoutputname" value="cvident.tar.gz"/>
+    <property name="deployoutputfile" value="${deployoutput}/${deployoutputname}"/>
+    <property name="remoteserver" value="cvident.aws.norse.digital"/>
+    <property name="production_in_dir" value="${remoteserver}:in"/>
+    <property name="deployswapowner" value="${deploysettings}/swap_owner.txt"/>
+    <property name="deployswapgroup" value="${deploysettings}/swap_group.txt"/>
+    <property name="deployexclude" value="${deploysettings}/exclude.txt"/>
+
+    <target name="build"
+            depends="remove-node-modules, npm-install, grunt-dist"
+            description="Build"/>
+
+    <target name="full-build"
+            depends="build, deploy-to-prod"
+            description="Full build"/>
+
+    <target name="remove-node-modules">
+        <echo message="Remove node modules"/>
+        <exec executable="rm">
+            <arg value="-rf"/>
+            <arg value="node_modules"/>
+        </exec>
+    </target>
+
+    <target name="npm-install">
+        <echo message="npm install"/>
+        <exec executable="npm">
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="bundle-install">
+        <echo message="bundle install"/>
+        <exec executable="bundle">
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="grunt-dist">
+        <echo message="grunt dist"/>
+        <exec executable="grunt" failonerror="true">
+            <arg value="dist"/>
+        </exec>
+    </target>
+
+    <target name="deploy-to-prod"
+            depends="create-tarball, copy-tarball, run-deploy-on-prod"
+            description="Deployment on production">
+
+    </target>
+
+    <target name="create-tarball" description="Create tar ball">
+        <echo message="tar -pczf ${deployoutputfile} -C ${workspace} . --owner-map=${deployswapowner} --group-map=${deployswapgroup} --exclude-from=${deployexclude} --exclude-vcs"/>
+        <exec executable="tar" dir="${workspace}" failonerror="true">
+            <arg line="-pczf ${deployoutputfile} -C ${workspace} . --owner-map=${deployswapowner} --group-map=${deployswapgroup} --exclude-from=${deployexclude} --exclude-vcs"/>
+        </exec>
+    </target>
+
+    <target name="copy-tarball">
+        <exec executable="scp" dir="${workspace}" failonerror="true">
+            <arg line="${deployoutputfile} ${production_in_dir}"/>
+        </exec>
+    </target>
+
+    <target name="run-deploy-on-prod">
+        <echo message="ssh ${remoteserver} sh ./bin/deploy.sh"/>
+        <exec executable="ssh">
+            <arg value="${remoteserver}"/>
+            <arg value="sh"/>
+            <arg value="./bin/deploy.sh"/>
+        </exec>
+    </target>
+
+    <target name="tag-version">
+        <echo message="Tag version"/>
+        <exec executable="php">
+            <arg value="${deploydir}/tag.php"/>
+        </exec>
+    </target>
+
+</project>

@@ -1,0 +1,7 @@
+/node_modules/
+/.sass-cache/
+/.tmp/
+/.idea/
+npm-debug.log
+/app/
+/bower_components/

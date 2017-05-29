@@ -1,0 +1,10 @@
+<md-menu ng-controller="logoutCtrl" md-offset="0 65" md-position-mode="target-right target" class="user-bar">
+ <md-button ng-click="$mdOpenMenu()" aria-label="Open user menu">
+    <div class="user-avatar" style="background: url(../images/avatar-profile.png);"><span class="avatar"></span></div>
+     {{$root.user.username}}
+    <md-icon md-svg-icon="menu-down"></md-icon>
+ </md-button>
+ <md-menu-content width="3" class="dropdown dropdown-user">
+   <md-menu-item><md-button ng-click="logout()">Log out</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
